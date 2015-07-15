@@ -5,11 +5,9 @@ Vagrant.configure(2) do |config|
   {
     'n1' => {
       :box => 'chef/centos-7.0',
-      :ip => '192.168.59.10',
     },
     'n2' => {
       :box => 'chef/centos-7.0',
-      :ip => '192.168.59.11',
     },
   }.each do |box, cfg|
       config.hostmanager.manage_host = true
@@ -22,8 +20,6 @@ Vagrant.configure(2) do |config|
         host.vm.box = cfg[:box]
         host.hostmanager.aliases = "#{box}"
         host.vm.hostname = "#{box}"
-
-        host.vm.network "private_network", ip: cfg[:ip]
 
         # Port forwarding, not needed?
         unless cfg[:portfwds].nil?
