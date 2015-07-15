@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
       :box => 'chef/centos-7.0',
     },
   }.each do |box, cfg|
-      config.hostmanager.manage_host = true
+      config.hostmanager.manage_host = false
       config.hostmanager.ignore_private_ip = false
 
       # Stop generation of keys & use insecure keys instead
