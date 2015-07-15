@@ -3,6 +3,9 @@
 
 Vagrant.configure(2) do |config|
   {
+    'admnode' => {
+      :box => 'chef/centos-7.0',
+    },
     'n1' => {
       :box => 'chef/centos-7.0',
     },
@@ -42,6 +45,9 @@ Vagrant.configure(2) do |config|
         end
 
         host.vm.provision :hostmanager
+        if box == "admnode"
+          host.vm.provision :shell, path: "admnode.sh"
+        end
       end
     end
 end
