@@ -1,0 +1,7 @@
+---
+# vim:ft=ansible:
+- hosts: testgroup1
+  sudo: yes
+  user: vagrant
+  roles:
+    - test_role

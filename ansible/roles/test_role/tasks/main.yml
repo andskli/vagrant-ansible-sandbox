@@ -1,0 +1,4 @@
+---
+# vim:ft=ansible:
+- name: hello world
+  shell: echo "hello world, from {{ansible_hostname}}"
