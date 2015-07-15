@@ -59,7 +59,6 @@ Vagrant.configure(2) do |config|
       # Hostmanager
       host.hostmanager.enabled = true
       host.hostmanager.manage_host = false
-      host.hostmanager.include_offline = true
       host.hostmanager.ignore_private_ip = false
       host.hostmanager.ip_resolver = proc do |machine|
         result = []
@@ -69,7 +68,8 @@ Vagrant.configure(2) do |config|
         ip_rows = result.select { |item| item[/inet (\d+\.\d+\.\d+\.\d+)/] }
         ip_rows.last.split(' ')[1].split('/')[0]
       end
+      host.vm.provision :hostmanager
+
     end
   end
-  config.vm.provision :hostmanager
 end
