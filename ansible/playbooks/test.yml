@@ -1,7 +1,7 @@
 ---
 # vim:ft=ansible:
-- hosts: testgroup1
+- hosts: ['testgroup1', 'testgroup2']
   sudo: yes
-  user: vagrant
+  remote_user: vagrant
   roles:
     - test_role
