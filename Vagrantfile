@@ -1,14 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Always provision admin node last
 MACHINES = {
-  'admnode' => {
-    :box => 'chef/centos-7.0',
-  },
   'n1' => {
     :box => 'chef/centos-7.0',
   },
   'n2' => {
+    :box => 'chef/centos-7.0',
+  },
+  'admnode' => {
     :box => 'chef/centos-7.0',
   },
 }
