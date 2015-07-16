@@ -56,7 +56,14 @@ Vagrant.configure(2) do |config|
       if box == "admnode"
         host.vm.provision :shell, path: "admnode.sh"
 
-        host.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "/home/vagrant/.vagrant.d/insecure_private_key"
+        insecure_private_key = "~/.vagrant.d/insecure_private_key"
+        unless File.exists?(insecure_private_key)
+          if ENV['VAGRANT_INSECURE_PRIVATE_KEY'].nil?
+            raise "You must specify environment variable VAGRANT_INSECURE_PRIVATE_KEY"
+          end
+          insecure_private_key = ENV['VAGRANT_INSECURE_PRIVATE_KEY']
+        end
+        host.vm.provision "file", source: insecure_private_key, destination: "/home/vagrant/.vagrant.d/insecure_private_key"
       end
 
       # Hostmanager
