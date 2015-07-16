@@ -25,8 +25,8 @@ Vagrant.configure(2) do |config|
       host.vm.hostname = "#{box}"
 
       # Setup networking based on provider
-      provider = (ENV['VAGRANT_DEFAULT_PROVIDER'] || :virtualbox).to_sym
-      case provider
+      provider = (ENV['VAGRANT_DEFAULT_PROVIDER'] || :nil)
+      case provider.to_sym
       when :virtualbox
         host.vm.network "private_network", type: "dhcp"
       when :vmware_workstation
