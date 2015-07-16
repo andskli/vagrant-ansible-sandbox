@@ -55,6 +55,8 @@ Vagrant.configure(2) do |config|
       # Admnode specific provisioning
       if box == "admnode"
         host.vm.provision :shell, path: "admnode.sh"
+
+        host.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "/home/vagrant/.vagrant.d/insecure_private_key"
       end
 
       # Hostmanager
